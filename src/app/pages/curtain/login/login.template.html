@@ -1,8 +1,50 @@
-<div class="login">
-  <label for="username">User name</label>
-  <input id="username" type="text" [(ngModel)]="username">
-  <label for="password">Password</label>
-  <input id="password" type="text" [(ngModel)]="password">
-  <input type="button" value="Log in" (click)="logIn()">
-  <input id="remember-me" type="checkbox" [(ngModel)]="rememberMe"><label for="remember-me">Remember me</label>
-</div>
+<form class="login" novalidate [formGroup]="loginForm">
+  <div class="form-group"
+       [class.has-error]="!loginForm.controls.username.valid &&
+                          loginForm.controls.username.touched">
+    <div class="col-xs-6">
+      <label class="control-label" for="username">User name</label>
+      <input type="text"
+             class="form-control"
+             id="username"
+             formControlName="username"
+             [(ngModel)]="username">
+    </div>
+    <div class="col-xs-6 login-validation-alerts">
+      <span class="required"
+            *ngIf="loginForm.controls.username.hasError('required') &&
+                   loginForm.controls.username.touched">
+        User name is required.</span>
+    </div>
+  </div>
+  <div class="form-group"
+       [class.has-error]="!loginForm.controls.password.valid &&
+                          loginForm.controls.password.touched">
+    <div class="col-xs-6">
+      <label class="control-label" for="password">Password</label>
+      <input type="text"
+             class="form-control"
+             id="password"
+             formControlName="password"
+             [(ngModel)]="password">
+    </div>
+    <div class="col-xs-6 login-validation-alerts">
+      <span class="required"
+            *ngIf="loginForm.controls.password.hasError('required') &&
+                   loginForm.controls.password.touched">
+        Password is required.</span>
+      <span class="required"
+            *ngIf="loginForm.controls.password.hasError('minlength') &&
+                   loginForm.controls.password.touched">
+        Min length should be more then 4 characters.</span>
+    </div>
+  </div>
+  <button
+    type="button"
+    class="btn btn-primary"
+    (click)="logIn()"
+    [disabled]="!loginForm.valid">
+    Log in
+  </button>
+  <!--<input id="remember-me" type="checkbox" [(ngModel)]="rememberMe"><label for="remember-me">Remember me</label>-->
+</form>
