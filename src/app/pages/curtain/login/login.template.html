@@ -1,0 +1,8 @@
+<div class="login">
+  <label for="username">User name</label>
+  <input id="username" type="text" [(ngModel)]="username">
+  <label for="password">Password</label>
+  <input id="password" type="text" [(ngModel)]="password">
+  <input type="button" value="Log in" (click)="logIn()">
+  <input id="remember-me" type="checkbox" [(ngModel)]="rememberMe"><label for="remember-me">Remember me</label>
+</div>

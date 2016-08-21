@@ -1,7 +1,7 @@
 import {RouterConfig} from '@angular/router';
 // import {Login} from "../login/login.component";
 // import {Reminder} from "../reminder/reminder.component";
-import {Curtain} from "./curtain.component";
+import {Navigation} from "./navigation.component";
 
 export const curtainRoutes: RouterConfig = [
     // {

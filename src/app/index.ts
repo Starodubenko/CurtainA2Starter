@@ -1,11 +1,12 @@
 // App
+import {AuthService} from "./services/auth.service";
+import {LoggedInGuard} from "./guards/loggedIn.guard";
 export * from './app.component';
-export * from './app.service';
 export * from './app.routes';
-
-import { AppState } from './app.service';
 
 // Application wide providers
 export const APP_PROVIDERS = [
-  AppState
+  AuthService,
+
+  LoggedInGuard
 ];
