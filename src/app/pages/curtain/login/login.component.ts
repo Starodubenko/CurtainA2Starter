@@ -5,6 +5,9 @@ import {AuthService} from "../../../services/auth.service";
 import {FormBuilder} from "@angular/forms";
 import {FormGroup} from "@angular/forms";
 import {Validators} from "@angular/forms";
+import {LoginAlert} from "./login.alert";
+import {onlyLettersAndNumbersValidator} from "../../../validators/onlyLettersAndNumbersValidator";
+import {onlyNumbersValidator} from "../../../validators/onlyNumbersValidator";
 
 @Component({
   selector: 'login',
@@ -13,9 +16,10 @@ import {Validators} from "@angular/forms";
 })
 export class LoginComponent {
   loginForm: FormGroup;
-  username: string = '';
-  password: string = '';
+  username: string = "";
+  password: string = "";
   rememberMe: boolean = false;
+  loginAlert: LoginAlert = null;
 
   constructor(private authService: AuthService,
               private router: Router,
@@ -29,10 +33,12 @@ export class LoginComponent {
   }
 
   logIn() {
-    console.log("login process");
     this.authService.logIn(this.username, this.password)
-      .subscribe(res => {
-        if (res) {
+      .subscribe((res:LoginAlert) => {
+        if (res.hasMessage) {
+          this.loginAlert = res;
+          this.password = "";
+        } else {
           this.router.navigate(['/home'])
         }
       })
@@ -44,6 +50,7 @@ export class LoginComponent {
         this.username,
         [
           Validators.required,
+          onlyNumbersValidator,
         ]
       ],
       'password': [
@@ -51,6 +58,7 @@ export class LoginComponent {
         [
           Validators.required,
           Validators.minLength(4),
+          onlyLettersAndNumbersValidator,
         ]
       ]
     })

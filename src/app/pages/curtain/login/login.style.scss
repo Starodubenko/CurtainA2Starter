@@ -1,7 +1,6 @@
 .login {
   height: 200px;
   width: 500px;
-  background-color: #98a1aa;
   position: absolute;
   margin: auto;
   top: 0;
@@ -9,23 +8,29 @@
   bottom: 0;
   left: 0;
 
-  .form-group.has-error{
-    .required {
+  .form-group.has-error {
+    .validation-danger {
       color: #a94442;
     }
   }
 
-  .btn{
+  .btn {
     margin: 15px;
   }
-}
 
-.login-validation-alerts {
-  display: table;
-  height: 36px;
-  margin-top: 23px;
-  span {
-    display: table-cell;
-    vertical-align: middle;
+  .login-alert {
+    position: absolute;
+    width: 100%;
+    top: -55px;
+  }
+
+  .login-validation-error {
+    display: table;
+    height: 36px;
+    margin-top: 23px;
+    span {
+      display: inline-block;
+      vertical-align: middle;
+    }
   }
 }

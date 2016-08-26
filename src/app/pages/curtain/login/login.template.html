@@ -1,4 +1,5 @@
 <form class="login" novalidate [formGroup]="loginForm">
+  <div class="alert alert-warning login-alert" *ngIf="loginAlert && loginAlert.hasMessage == true" role="alert">{{loginAlert.message}}</div>
   <div class="form-group"
        [class.has-error]="!loginForm.controls.username.valid &&
                           loginForm.controls.username.touched">
@@ -10,11 +11,13 @@
              formControlName="username"
              [(ngModel)]="username">
     </div>
-    <div class="col-xs-6 login-validation-alerts">
-      <span class="required"
-            *ngIf="loginForm.controls.username.hasError('required') &&
-                   loginForm.controls.username.touched">
+    <div class="col-xs-6 login-validation-error">
+      <span class="validation-danger"
+            *ngIf="loginForm.controls.username.hasError('required') && loginForm.controls.username.touched">
         User name is required.</span>
+      <span class="validation-danger"
+            *ngIf="loginForm.controls.username.hasError('onlyLetters') && loginForm.controls.username.touched">
+        Password can contains only letters.</span>
     </div>
   </div>
   <div class="form-group"
@@ -28,15 +31,16 @@
              formControlName="password"
              [(ngModel)]="password">
     </div>
-    <div class="col-xs-6 login-validation-alerts">
-      <span class="required"
-            *ngIf="loginForm.controls.password.hasError('required') &&
-                   loginForm.controls.password.touched">
+    <div class="col-xs-6 login-validation-error">
+      <span class="validation-danger"
+            *ngIf="loginForm.controls.password.hasError('required') && loginForm.controls.password.touched">
         Password is required.</span>
-      <span class="required"
-            *ngIf="loginForm.controls.password.hasError('minlength') &&
-                   loginForm.controls.password.touched">
+      <span class="validation-danger"
+            *ngIf="loginForm.controls.password.hasError('minlength') && loginForm.controls.password.touched">
         Min length should be more then 4 characters.</span>
+      <span class="validation-danger"
+            *ngIf="loginForm.controls.password.hasError('onlyLettersAndNumbers') && loginForm.controls.password.touched">
+        Password can contains only letters and numbers.</span>
     </div>
   </div>
   <button

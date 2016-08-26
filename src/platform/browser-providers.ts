@@ -17,7 +17,7 @@ import { providePrefetchIdleCallbacks } from '@angularclass/request-idle-callbac
 
 
 import { routes, asyncRoutes, prefetchRouteCallbacks } from '../app/app.routes';
-import {provideStore} from "@ngrx/store";
+// import {provideStore} from "@ngrx/store";
 /*
 * Application Providers/Directives/Pipes
 * providers/directives/pipes that only live in our browser environment
@@ -34,7 +34,7 @@ export const APPLICATION_PROVIDERS = [
   ...HTTP_PROVIDERS,
 
   { provide: LocationStrategy, useClass: PathLocationStrategy },
-  provideStore({})
+  // provideStore({})
 ];
 
 export const PROVIDERS = [
