@@ -1,7 +1,40 @@
 .navigation {
   width: 100%;
-  height: 60px;
-  background-color: #aa6e48;
+  background-color: #e1e808;
   position: absolute;
-  bottom: 0;
+
+  .logo-icon{
+    height: 60px;
+    margin-left: 10px;
+    padding: 0;
+
+    img {
+      height: 60px;
+      float: left;
+    }
+  }
+
+  .label-name {
+    height: 60px;
+  }
+
+  .user-info {
+    width: 120px;
+    float: right;
+
+    .name {
+      height: 35px;
+      display: table-cell;
+      vertical-align: middle;
+      padding: 0 5px;
+    }
+
+    .action {
+      padding: 0 5px;
+
+      a {
+        float: right;
+      }
+    }
+  }
 }

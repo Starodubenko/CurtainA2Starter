@@ -1,25 +1,27 @@
 import {Component} from '@angular/core';
-import {ROUTER_DIRECTIVES} from "@angular/router";
 import {Router} from "@angular/router";
 import {AuthService} from "../../../services/auth.service";
 import {FormBuilder} from "@angular/forms";
 import {FormGroup} from "@angular/forms";
 import {Validators} from "@angular/forms";
-import {LoginAlert} from "./login.alert";
+import {LoginResponse} from "../../../model/loginResponse.model";
 import {onlyLettersAndNumbersValidator} from "../../../validators/onlyLettersAndNumbersValidator";
 import {onlyNumbersValidator} from "../../../validators/onlyNumbersValidator";
 
 @Component({
   selector: 'login',
-  templateUrl: './login.template.html',
-  styleUrls: ['./login.style.scss']
+  providers: [],
+  directives: [],
+  pipes: [],
+  styleUrls: ['./login.style.scss'],
+  templateUrl: './login.template.html'
 })
 export class LoginComponent {
   loginForm: FormGroup;
   username: string = "";
   password: string = "";
   rememberMe: boolean = false;
-  loginAlert: LoginAlert = null;
+  loginAlert: LoginResponse = null;
 
   constructor(private authService: AuthService,
               private router: Router,
@@ -34,12 +36,12 @@ export class LoginComponent {
 
   logIn() {
     this.authService.logIn(this.username, this.password)
-      .subscribe((res:LoginAlert) => {
-        if (res.hasMessage) {
+      .subscribe((res:LoginResponse) => {
+        if (this.authService.isLoggedIn()) {
+          this.router.navigate(['/home'])
+        } else {
           this.loginAlert = res;
           this.password = "";
-        } else {
-          this.router.navigate(['/home'])
         }
       })
   }

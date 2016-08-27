@@ -4,7 +4,7 @@ import { Component } from '@angular/core';
   selector: 'home',  // <home></home>
   providers: [],
   directives: [],
-  pipes: [ ],
+  pipes: [],
   styleUrls: [ './home.style.css' ],
   templateUrl: './home.template.html'
 })

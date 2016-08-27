@@ -1,5 +1,5 @@
 <form class="login" novalidate [formGroup]="loginForm">
-  <div class="alert alert-warning login-alert" *ngIf="loginAlert && loginAlert.hasMessage == true" role="alert">{{loginAlert.message}}</div>
+  <div class="alert alert-warning login-alert" *ngIf="loginAlert" role="alert">{{loginAlert.message}}</div>
   <div class="form-group"
        [class.has-error]="!loginForm.controls.username.valid &&
                           loginForm.controls.username.touched">
