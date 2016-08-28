@@ -24,7 +24,9 @@ import {NavigationComponent} from "./components/navigation/navigation.component"
       <!--</span>-->
     <!--</nav>-->
     <navigation></navigation>
-    <router-outlet></router-outlet>
+    <div class="main-container">
+      <router-outlet></router-outlet>
+    </div>
   `,
   directives: [NavigationComponent],
 })

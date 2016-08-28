@@ -13,7 +13,6 @@ export class LoggedInGuard implements CanActivate {
     let targetState = state.url;
     let result = true;
 
-    debugger;
     if (targetState == '/' && isLoggedIn){
       result = false;
       history.back(-1)

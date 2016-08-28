@@ -1,0 +1,35 @@
+.course {
+  .info-bar {
+    display: table-cell;
+    padding: 10px;
+    .header {
+      border-bottom: 1px solid #b4abab;
+      margin-bottom: 5px;
+      .title {
+        width: 75%;
+        display: inline-block;
+      }
+      .duration {
+
+      }
+      .date {
+        float: right;
+      }
+    }
+    .description {
+    }
+  }
+  .action-bar {
+    display: table-cell;
+    width: 200px;
+
+    .action-edit{
+      width: 180px;
+      margin: 15px 10px 5px 10px;
+    }
+    .action-delete{
+      width: 180px;
+      margin: 5px 10px 15px 10px;
+    }
+  }
+}

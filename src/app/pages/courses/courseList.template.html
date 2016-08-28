@@ -1,0 +1,12 @@
+<div class="course-list">
+  <search-row></search-row>
+  <button>Add new course</button>
+
+  <!--<course></course>-->
+  <div class="list">
+    <course *ngFor="let item of courseList"
+            [course]="item"
+            (edit)="editCourse($event)"
+            (delete)="deleteCourse($event)"></course>
+  </div>
+</div>
