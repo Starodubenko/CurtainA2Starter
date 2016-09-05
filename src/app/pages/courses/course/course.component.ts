@@ -1,13 +1,17 @@
 import {Component, Input, Output, EventEmitter} from '@angular/core';
 import {CourseService} from "../../../services/course.service";
 import {Course} from "../../../model/course.model";
-import {Router} from "@angular/router";
+import {ActivatedRoute} from "@angular/router";
+import {FormGroup} from "@angular/forms";
+import {User} from "../../../model/user.model";
+import {DurationPipe} from "../../../pipes";
+import {CustomDateComponent} from "../../../components/customDate/customDate.component";
 
 @Component({
   selector: 'course',
   providers: [],
-  directives: [],
-  pipes: [],
+  directives: [CustomDateComponent],
+  pipes: [DurationPipe],
   styleUrls: ['./course.style.scss'],
   templateUrl: './course.template.html'
 })
@@ -16,11 +20,23 @@ export class CourseComponent {
   @Input('course')
   course: Course;
 
+  @Input('authorCandidates')
+  authorCandidates: User[];
+
+  @Input('isBlank')
+  isBlank: boolean;
+
   @Output('edit')
   editEvent = new EventEmitter();
 
   @Output('delete')
   deleteEvent = new EventEmitter();
+
+  @Output('moveRight')
+  moveRightEvent = new EventEmitter();
+
+  @Output('moveLeft')
+  moveLeftEvent = new EventEmitter();
 
   edit(){
     this.editEvent.emit(this.course);
@@ -28,6 +44,14 @@ export class CourseComponent {
 
   delete(){
     this.deleteEvent.emit(this.course.id)
+  }
+
+  moveCandidateToRight(){
+    this.moveRightEvent.emit(this.course);
+  }
+
+  moveCandidateToLeft(){
+    this.moveLeftEvent.emit(this.course);
   }
 
 }

@@ -2,8 +2,17 @@
   <!--<div class="logo-icon"></div>-->
   <a class="navbar-brand logo-icon" href="#">
     <img src="../../../assets/icon/learn-icon.png" alt="">
-    <span class="navbar-brand label-name">Courses</span>
+    <span class="navbar-brand label-name">
+      <a [routerLink]="['./courses-list']">
+          Courses
+      </a>
+    </span>
   </a>
+  <ol class="breadcrumb">
+    <li *ngFor="let crumb of breadCrumbs">
+      <a [routerLink]="['./' + crumb]">{{crumb}}</a>
+    </li>
+  </ol>
   <div class="user-info">
     <div class="name">John Doe</div>
     <div class="action">

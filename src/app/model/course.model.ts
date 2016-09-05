@@ -1,13 +1,17 @@
+import {User} from "./user.model";
 export class Course {
   private _id: Number = null;
-  constructor(private _name: string,
-              private _date: Date,
-              private _duration: Number,
-              private _describtion: string) {
+
+  constructor(private _name: string = "",
+              private _date: Date = new Date(),
+              private _duration: Number = 0,
+              private _description: string = "",
+              private _authors: User[] = []) {
     this._name = _name;
     this._date = _date;
     this._duration = _duration;
-    this._describtion = _describtion;
+    this._description = _description;
+    this._authors = _authors;
   }
 
   get id(): Number {
@@ -42,11 +46,19 @@ export class Course {
     this._duration = value;
   }
 
-  get describtion(): string {
-    return this._describtion;
+  get description(): string {
+    return this._description;
   }
 
-  set describtion(value: string) {
-    this._describtion = value;
+  set description(value: string) {
+    this._description = value;
+  }
+
+  get authors(): User[] {
+    return this._authors;
+  }
+
+  set authors(value: User[]) {
+    this._authors = value;
   }
 }

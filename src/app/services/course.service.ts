@@ -8,7 +8,7 @@ export class CourseService {
 
   courseList: Course[] = [];
 
-  constructor(private http: Http){
+  constructor(private http: Http) {
     let courseOne = new Course(
       "First course",
       new Date(),
@@ -34,27 +34,29 @@ export class CourseService {
     this.courseList.push(courseThree);
   };
 
-  getCourse(id: Number): Observable<Course>{
+  getCourse(id: Number): Observable<Course> {
     return Observable.create(observer => {
-
+      observer.next(this.courseList.filter(function (item) {
+        return item.id === id;
+      })[0])
     })
   }
 
-  getList(): Observable<Course[]>{
+  getList(): Observable<Course[]> {
     return Observable.create(observer => {
       observer.next(this.courseList);
     })
   }
 
-  addCourse(course: Course){
+  addCourse(course: Course) {
 
   }
 
-  removeCourse(id: Number): Observable<boolean>{
+  removeCourse(id: Number): Observable<boolean> {
     return Observable.create(observer => {
       let result = false;
       this.courseList.filter((item) => {
-        if (item.id == id){
+        if (item.id == id) {
           result = true;
         }
         return item.id != id;
@@ -63,7 +65,7 @@ export class CourseService {
     })
   }
 
-  updateCourse(newCourse: Course): Observable<boolean>{
+  updateCourse(newCourse: Course): Observable<boolean> {
     return null;
   }
 }

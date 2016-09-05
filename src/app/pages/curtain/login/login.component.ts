@@ -38,7 +38,7 @@ export class LoginComponent {
     this.authService.logIn(this.username, this.password)
       .subscribe((res:LoginResponse) => {
         if (this.authService.isLoggedIn()) {
-          this.router.navigate(['/home'])
+          this.router.navigate(['/courses-list'])
         } else {
           this.loginAlert = res;
           this.password = "";

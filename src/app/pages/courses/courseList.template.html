@@ -1,8 +1,9 @@
 <div class="course-list">
-  <search-row></search-row>
-  <button>Add new course</button>
+  <div class="list-actions">
+    <button class="btn btn-default add-cource-button">Add new course</button>
+    <search-row></search-row>
+  </div>
 
-  <!--<course></course>-->
   <div class="list">
     <course *ngFor="let item of courseList"
             [course]="item"

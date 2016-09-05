@@ -1,0 +1,24 @@
+.form-group {
+  display: table;
+  padding: 5px 10px;
+
+  &.date {
+    input{
+      width: 120px;
+    }
+  }
+  label {
+    width: 200px;
+    text-align: end;
+    display: table-cell;
+    vertical-align: middle;
+    padding-right: 10px;
+  }
+  input, textarea {
+    display: table-cell;
+    width: 100%;
+  }
+  textarea {
+    resize: vertical;
+  }
+}

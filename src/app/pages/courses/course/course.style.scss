@@ -23,13 +23,76 @@
     display: table-cell;
     width: 200px;
 
-    .action-edit{
+    .action-edit {
       width: 180px;
       margin: 15px 10px 5px 10px;
     }
-    .action-delete{
+    .action-delete {
       width: 180px;
       margin: 5px 10px 15px 10px;
+    }
+  }
+}
+
+.course-blank {
+  margin-top: 60px;
+
+  .action-bar {
+    margin-left: 220px;
+  }
+  .form-group {
+    display: table;
+    padding: 5px 10px;
+
+    &.edit-course-rest-width {
+      width: 100%;
+    }
+    &.date {
+      input{
+        width: 120px;
+      }
+    }
+    &.duration {
+      input{
+        width: 75px;
+      }
+      span {
+        margin-left: 10px;
+      }
+    }
+    &.author-list{
+
+      .authors-list-block{
+        display: table-cell;
+        width: 400px;
+        select, .actions-block{
+          float: left;
+        }
+        select {
+          width: 140px;
+        }
+        .actions-block{
+          width: 50px;
+          margin: 5px;
+          button{
+            margin: 5px;
+          }
+        }
+      }
+    }
+    label {
+      width: 200px;
+      text-align: end;
+      display: table-cell;
+      vertical-align: middle;
+      padding-right: 10px;
+    }
+    input, textarea {
+      display: table-cell;
+      width: 100%;
+    }
+    textarea {
+      resize: vertical;
     }
   }
 }

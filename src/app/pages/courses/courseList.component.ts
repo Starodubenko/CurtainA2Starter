@@ -2,16 +2,17 @@ import {Component} from '@angular/core';
 import {Course} from "../../model/course.model";
 import {CourseService} from "../../services/course.service";
 import {CourseComponent} from "./course/course.component";
+import {SearchRowComponent} from "./searchRow/searchRow.component";
 
 @Component({
   selector: 'course-list',
   providers: [],
-  directives: [CourseComponent],
+  directives: [CourseComponent, SearchRowComponent],
   pipes: [],
   styleUrls: ['./courseList.style.scss'],
   templateUrl: './courseList.template.html'
 })
-export class CourseListComponent {
+export class CourseListPage {
 
   courseList: Course[];
 

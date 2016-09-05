@@ -1,14 +1,68 @@
-<div class="panel panel-default course">
+<div *ngIf="!isBlank" class="panel panel-default course">
   <div class="info-bar">
     <div class="header">
-      <span class="title">First course</span>
-      <span class="duration">120 min</span>
-      <span class="date">10.10.2016</span>
+      <span class="title">{{course.name}}</span>
+      <span class="duration">{{course.duration | durationPipe}}</span>
+      <span class="date">{{course.date | date : "dd.MM.yyyy"}}</span>
     </div>
-    <div class="description">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab ad adipisci animi, aperiam, aspernatur at atque consequatur consequuntur cupiditate deleniti ducimus enim est facere facilis harum ipsa, ipsam iusto libero magnam molestiae nulla numquam odio odit officia perspiciatis quas quia quidem quod reiciendis repellendus tempora tempore temporibus ut veniam veritatis voluptates voluptatibus! Ad aspernatur at commodi delectus deleniti esse est ipsum labore libero nobis nulla obcaecati officia quia, repellendus rerum velit, voluptate? Asperiores at atque blanditiis, consequatur consequuntur dolore eaque earum eos facilis fuga, harum iste itaque magnam nam nemo porro quod quos reiciendis rem reprehenderit ullam veniam vero voluptatum!</div>
+    <div class="description">{{course.description}}</div>
   </div>
   <div class="action-bar">
-    <button class="btn btn-default action-edit">Edit</button>
+    <a [routerLink]="['./' + course.id + '/edit']" class="btn btn-default action-edit">Edit</a>
     <button class="btn btn-default action-delete">Delete</button>
   </div>
 </div>
+
+<form *ngIf="isBlank" class="course-blank" novalidate>
+
+  <div class="form-group">
+    <label for="title">Title</label>
+    <input type="text" id="title" class="form-control title" [(ngModel)]="course.name" name="name">
+  </div>
+
+  <div class="form-group edit-course-rest-width">
+    <label for="description">Description</label>
+    <textarea id="description" class="form-control description" [(ngModel)]="course.description" name="description"></textarea>
+  </div>
+
+  <custom-date [date]="course.date"></custom-date>
+  <!--<div class="form-group date">-->
+    <!--<label for="date">Date</label>-->
+    <!--<input type="text" id="date" class="form-control date" [(ngModel)]="course.date" name="date"-->
+           <!--pattern="^(?:0?[1-9]|1\d|2[0-8])(\/|-|\.)(?:(?:0?[1-9])|(?:1[0-2]))(\/|-|\.)(?:(?:1[6-9]|[2-9]\d)?\d{2})$">-->
+  <!--</div>-->
+
+  <div class="form-group duration">
+    <label for="duration">Duration</label>
+    <input type="text" id="duration" class="form-control duration" [(ngModel)]="course.duration" name="duration">
+    <span>{{course.duration | durationPipe}}</span>
+  </div>
+
+  <div class="form-group author-list">
+    <label>Authors list</label>
+    <div class="authors-list-block">
+      <select class="form-control candidates" multiple size="5">
+        <option *ngFor="let candidate of authorCandidates" [value]="candidate.id">{{candidate.firstName + ' ' + candidate.lastName}}</option>
+      </select>
+      <div class="actions-block">
+        <button class="btn btn-default" (click)="moveCandidateToRight()">
+          <span class="glyphicon glyphicon-chevron-right"></span>
+        </button>
+        <button class="btn btn-default" (click)="moveCandidateToLeft()">
+          <span class="glyphicon glyphicon-chevron-left"></span>
+        </button>
+      </div>
+      <select class="form-control authors" multiple size="5">
+        <option>Чебурашка</option>
+        <option>Крокодил Гена</option>
+        <option>Шапокляк</option>
+        <option>Крыса Лариса</option>
+      </select>
+    </div>
+  </div>
+
+  <div class="action-bar">
+    <button class="btn btn-default action-edit">Save</button>
+    <button class="btn btn-default action-delete">Cancel</button>
+  </div>
+</form>

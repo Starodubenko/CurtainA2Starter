@@ -8,8 +8,8 @@ import {Component} from '@angular/core';
   styleUrls: ['./searchRow.style.scss'],
   templateUrl: './searchRow.template.html'
 })
-export class SearchRow {
+export class SearchRowComponent {
 
-  username: string = "";
+  serchingRow: string = "";
 
 }

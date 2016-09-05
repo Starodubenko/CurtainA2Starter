@@ -1,4 +1,3 @@
-import './navigation.scss'
 import {Component} from '@angular/core';
 import {ROUTER_DIRECTIVES, Router} from "@angular/router";
 import {AuthService} from "../../services/auth.service";
@@ -12,6 +11,8 @@ import {routes} from "../../app.routes";
   templateUrl: './navigation.template.html'
 })
 export class NavigationComponent {
+
+  public breadCrumbs: String[] = ["courses-list", "edit"];
 
   constructor(private authService: AuthService,
               private router: Router) {

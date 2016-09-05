@@ -1,0 +1,8 @@
+<div class="edit-course">
+  <course [course]="course"
+          [authorCandidates]="authorCandidates"
+          [isBlank]="true"
+          (saveEvent)="saveCourse($event)"
+          (deleteEvent)="deleteCourse($event)">
+  </course>
+</div>
