@@ -7,13 +7,15 @@ export const routes: RouterConfig = [
   { path: 'home',  component: 'Home' , canActivate: [LoggedInGuard]},
   { path: 'courses-list',  component: 'CourseListPage' , canActivate: [LoggedInGuard]},
   { path: 'courses-list/:id/edit',  component: 'EditCoursePage' , canActivate: [LoggedInGuard]},
+  { path: 'courses-list/add',  component: 'AddCoursePage' , canActivate: [LoggedInGuard]},
 ];
 
 export const asyncRoutes: AsyncRoutes = {
   'LoginComponent': require('es6-promise-loader!./pages/curtain/login'),
   'Home': require('es6-promise-loader!./pages/home'),
   'CourseListPage': require('es6-promise-loader!./pages/courses'),
-  'EditCoursePage': require('es6-promise-loader!./pages/editCourse')
+  'EditCoursePage': require('es6-promise-loader!./pages/editCourse'),
+  'AddCoursePage': require('es6-promise-loader!./pages/addCourse')
 };
 
 

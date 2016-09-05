@@ -9,7 +9,7 @@
   </div>
   <div class="action-bar">
     <a [routerLink]="['./' + course.id + '/edit']" class="btn btn-default action-edit">Edit</a>
-    <button class="btn btn-default action-delete">Delete</button>
+    <button class="btn btn-default action-delete" (click)="delete()">Delete</button>
   </div>
 </div>
 
@@ -63,6 +63,7 @@
 
   <div class="action-bar">
     <button class="btn btn-default action-edit">Save</button>
-    <button class="btn btn-default action-delete">Cancel</button>
+    <button class="btn btn-default action-edit">Add</button>
+    <button class="btn btn-default action-delete" (click)="cancel()">Cancel</button>
   </div>
 </form>

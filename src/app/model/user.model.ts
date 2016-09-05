@@ -1,17 +1,17 @@
 export class User {
 
-  private _id: Number = 0;
+  private _id: number = 0;
 
   constructor(private _firstName: String, private _lastName: String) {
     this._firstName = _firstName;
     this._lastName = _lastName;
   }
 
-  get id(): Number {
+  get id(): number {
     return this._id;
   }
 
-  set id(value: Number) {
+  set id(value: number) {
     this._id = value;
   }
 

@@ -22,16 +22,16 @@ export class EditCoursePage {
   constructor(private courseService: CourseService,
               private userService: UserService,
               private router: Router,
-              private route: ActivatedRoute){
+              private route: ActivatedRoute) {
 
   }
 
-  ngOnInit(){
+  ngOnInit() {
     let self = this;
     this.route.params.subscribe(params => {
       let id = +params['id'];
       this.courseService.getCourse(id)
-        .subscribe((res:Course) => {
+        .subscribe((res: Course) => {
           self.course = res;
         });
       this.userService.getAuthorCandidates().subscribe((res: User[]) => {
@@ -40,17 +40,21 @@ export class EditCoursePage {
     });
   }
 
-  deleteCourse(id){
-    this.courseService.removeCourse(id).subscribe((res:boolean) => {
+  deleteCourse(id: number) {
+    this.courseService.removeCourse(id).subscribe((res: boolean) => {
       if (res) {
         this.router.navigate(['/courses-list']);
       }
     });
   }
 
-  saveCourse(course: Course){
-    this.courseService.updateCourse(course).subscribe((res:boolean) => {
-      if (res){
+  cancelEditCourse() {
+    this.router.navigate(['/courses-list']);
+  }
+
+  saveCourse(course: Course) {
+    this.courseService.updateCourse(course).subscribe((res: boolean) => {
+      if (res) {
         this.router.navigate(['/courses-list']);
       }
     });

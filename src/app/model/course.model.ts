@@ -1,10 +1,10 @@
 import {User} from "./user.model";
 export class Course {
-  private _id: Number = null;
+  private _id: number = null;
 
   constructor(private _name: string = "",
               private _date: Date = new Date(),
-              private _duration: Number = 0,
+              private _duration: number = 0,
               private _description: string = "",
               private _authors: User[] = []) {
     this._name = _name;
@@ -14,11 +14,11 @@ export class Course {
     this._authors = _authors;
   }
 
-  get id(): Number {
+  get id(): number {
     return this._id;
   }
 
-  set id(value: Number) {
+  set id(value: number) {
     this._id = value;
   }
 
@@ -38,11 +38,11 @@ export class Course {
     this._date = value;
   }
 
-  get duration(): Number {
+  get duration(): number {
     return this._duration;
   }
 
-  set duration(value: Number) {
+  set duration(value: number) {
     this._duration = value;
   }
 

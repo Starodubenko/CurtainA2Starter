@@ -22,10 +22,10 @@ export class CourseListPage {
     });
   }
 
-  deleteCourse(id){
+  deleteCourse(id: number){
     this.courseService.removeCourse(id).subscribe((res:boolean) => {
       if (res) {
-        this.courseList.filter((item) => {
+        this.courseList = this.courseList.filter((item) => {
           return item.id != id;
         });
       }

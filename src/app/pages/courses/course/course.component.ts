@@ -18,7 +18,7 @@ import {CustomDateComponent} from "../../../components/customDate/customDate.com
 export class CourseComponent {
 
   @Input('course')
-  course: Course;
+  course: Course = new Course();
 
   @Input('authorCandidates')
   authorCandidates: User[];
@@ -28,6 +28,12 @@ export class CourseComponent {
 
   @Output('edit')
   editEvent = new EventEmitter();
+
+  @Output('add')
+  addEvent = new EventEmitter();
+
+  @Output('cancel')
+  cancelEvent = new EventEmitter();
 
   @Output('delete')
   deleteEvent = new EventEmitter();
@@ -44,6 +50,10 @@ export class CourseComponent {
 
   delete(){
     this.deleteEvent.emit(this.course.id)
+  }
+
+  cancel(){
+    this.cancelEvent.emit(this.course);
   }
 
   moveCandidateToRight(){
