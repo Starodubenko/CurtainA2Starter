@@ -1,8 +1,5 @@
 import {Component, Input, Output, EventEmitter} from '@angular/core';
-import {CourseService} from "../../../services/course.service";
 import {Course} from "../../../model/course.model";
-import {ActivatedRoute} from "@angular/router";
-import {FormGroup} from "@angular/forms";
 import {User} from "../../../model/user.model";
 import {DurationPipe} from "../../../pipes";
 import {CustomDateComponent} from "../../../components/customDate/customDate.component";

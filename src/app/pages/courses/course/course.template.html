@@ -62,8 +62,8 @@
   </div>
 
   <div class="action-bar">
-    <button class="btn btn-default action-edit">Save</button>
-    <button class="btn btn-default action-edit">Add</button>
+    <button class="btn btn-default action-edit" *ngIf="course.id" >Save</button>
+    <button class="btn btn-default action-edit" *ngIf="!course.id" >Add</button>
     <button class="btn btn-default action-delete" (click)="cancel()">Cancel</button>
   </div>
 </form>

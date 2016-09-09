@@ -1,4 +1,5 @@
-import {Component} from '@angular/core';
+import {Component, Input, Output, EventEmitter} from '@angular/core';
+import {CourseList} from "../../../model/courseList.model";
 
 @Component({
   selector: 'search-row',
@@ -10,6 +11,17 @@ import {Component} from '@angular/core';
 })
 export class SearchRowComponent {
 
-  serchingRow: string = "";
+  searchingRow: string = "";
 
+  @Output('find')
+  findEvent = new EventEmitter();
+
+  @Input('serviceForSearching')
+  private servise: any;
+
+  findCourses(){
+    this.servise.getList(this.searchingRow, 0, 5).subscribe((res:CourseList) => {
+      this.findEvent.emit(res);
+    });
+  }
 }

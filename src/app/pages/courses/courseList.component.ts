@@ -3,6 +3,7 @@ import {Course} from "../../model/course.model";
 import {CourseService} from "../../services/course.service";
 import {CourseComponent} from "./course/course.component";
 import {SearchRowComponent} from "./searchRow/searchRow.component";
+import {CourseList} from "../../model/courseList.model";
 
 @Component({
   selector: 'course-list',
@@ -14,18 +15,25 @@ import {SearchRowComponent} from "./searchRow/searchRow.component";
 })
 export class CourseListPage {
 
-  courseList: Course[];
+  courseList: CourseList;
+
+  private findService: CourseService;
 
   constructor(private courseService: CourseService){
-    this.courseService.getList().subscribe((res:Course[]) => {
+    this.findService = courseService;
+    this.courseService.getList().subscribe((res:CourseList) => {
       this.courseList = res;
     });
+  }
+
+  setSearchedList(searchedCourseList){
+    this.courseList = searchedCourseList;
   }
 
   deleteCourse(id: number){
     this.courseService.removeCourse(id).subscribe((res:boolean) => {
       if (res) {
-        this.courseList = this.courseList.filter((item) => {
+        this.courseList.courses = this.courseList.courses.filter((item) => {
           return item.id != id;
         });
       }
@@ -36,12 +44,12 @@ export class CourseListPage {
     this.courseService.updateCourse(course).subscribe((res:boolean) => {
       if (res){
         for(let i=0;
-            i < this.courseList.length &&
+            i < this.courseList.courses.length &&
             this.courseList[i].id != course.id; i++) {
 
-          i < this.courseList.length ?
+          i < this.courseList.courses.length ?
             this.courseList[i] = course :
-            this.courseList.push(course);
+            this.courseList.courses.push(course);
         }
       }
     });
