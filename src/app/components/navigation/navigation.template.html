@@ -8,15 +8,16 @@
       </a>
     </span>
   </a>
-  <ol class="breadcrumb">
-    <li *ngFor="let crumb of breadCrumbs">
-      <a [routerLink]="['./' + crumb]">{{crumb}}</a>
-    </li>
-  </ol>
   <div class="user-info">
     <div class="name">{{user && (user.firstName + " " + user.lastName)}}</div>
     <div class="action">
       <a href="" *ngIf="user" (click)="logOut()">Log out</a>
     </div>
+  </div>
+  <div class="breadcrumb-container">
+    <breadcrumb></breadcrumb>
+    <!--<li *ngFor="let crumb of breadCrumbs">-->
+    <!--<a [routerLink]="['./' + crumb]">{{crumb}}</a>-->
+    <!--</li>-->
   </div>
 </div>
