@@ -41,9 +41,10 @@
   <div class="form-group author-list">
     <label>Authors list</label>
     <div class="authors-list-block">
-      <select class="form-control candidates" multiple size="5">
-        <option *ngFor="let candidate of authorCandidates" [value]="candidate.id">{{candidate.firstName + ' ' + candidate.lastName}}</option>
-      </select>
+      <!--<select class="form-control candidates" multiple size="5">-->
+        <!--<option *ngFor="let candidate of authorsCandidates" [value]="candidate.id">{{candidate.firstName + ' ' + candidate.lastName}}</option>-->
+      <!--</select>-->
+      <multi-select-list [options]="mapUsersToOptions(authorsCandidates)" (selectedHaveChanged)="setSelectedCandidates($event)"></multi-select-list>
       <div class="actions-block">
         <button class="btn btn-default" (click)="moveCandidateToRight()">
           <span class="glyphicon glyphicon-chevron-right"></span>
@@ -52,12 +53,7 @@
           <span class="glyphicon glyphicon-chevron-left"></span>
         </button>
       </div>
-      <select class="form-control authors" multiple size="5">
-        <option>Чебурашка</option>
-        <option>Крокодил Гена</option>
-        <option>Шапокляк</option>
-        <option>Крыса Лариса</option>
-      </select>
+      <multi-select-list [options]="mapUsersToOptions(authors)" (selectedHaveChanged)="setAuthors($event)"></multi-select-list>
     </div>
   </div>
 

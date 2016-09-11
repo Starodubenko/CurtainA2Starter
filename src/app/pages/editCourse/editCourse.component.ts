@@ -17,7 +17,7 @@ import {UserService} from "../../services/user.service";
 export class EditCoursePage {
 
   course: Course = new Course();
-  authorCandidates: User[] = [];
+  authorsCandidates: User[] = [];
 
   constructor(private courseService: CourseService,
               private userService: UserService,
@@ -35,7 +35,7 @@ export class EditCoursePage {
           self.course = res;
         });
       this.userService.getAuthorCandidates().subscribe((res: User[]) => {
-        self.authorCandidates = res;
+        self.authorsCandidates = res;
       });
     });
   }

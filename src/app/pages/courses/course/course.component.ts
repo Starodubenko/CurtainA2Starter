@@ -3,11 +3,12 @@ import {Course} from "../../../model/course.model";
 import {User} from "../../../model/user.model";
 import {DurationPipe} from "../../../pipes";
 import {CustomDateComponent} from "../../../components/customDate/customDate.component";
+import {MultiSelectListComponent} from "../../../components/multiselectList/miltiSelectList.component";
 
 @Component({
   selector: 'course',
   providers: [],
-  directives: [CustomDateComponent],
+  directives: [CustomDateComponent, MultiSelectListComponent],
   pipes: [DurationPipe],
   styleUrls: ['./course.style.scss'],
   templateUrl: './course.template.html'
@@ -17,8 +18,11 @@ export class CourseComponent {
   @Input('course')
   course: Course = new Course();
 
-  @Input('authorCandidates')
-  authorCandidates: User[];
+  @Input('authorsCandidates')
+  authorsCandidates: User[];
+
+  @Input('authors')
+  authors: User[];
 
   @Input('isBlank')
   isBlank: boolean;
@@ -41,6 +45,9 @@ export class CourseComponent {
   @Output('moveLeft')
   moveLeftEvent = new EventEmitter();
 
+  private selectedCanditates: number[];
+  private selectedAuthors: number[];
+
   edit(){
     this.editEvent.emit(this.course);
   }
@@ -54,11 +61,30 @@ export class CourseComponent {
   }
 
   moveCandidateToRight(){
-    this.moveRightEvent.emit(this.course);
+    // let
+    // let isAuthorsArrayBecameMore = new Array();
+    // this.selectedCanditates.forEach((itemId) => {
+    //   this.authors.forEach((user: User) => {user.id})
+    // });
+    //
+    // this.course.authors.filter((id) => {});
+    //
+    // this.course.authors = this.selectedCanditates;
   }
 
   moveCandidateToLeft(){
     this.moveLeftEvent.emit(this.course);
   }
 
+  mapUsersToOptions(users){
+    return users ? users.map(user => ({value: user.id, name:user.firstName + "" + user.lastName})): [];
+  }
+
+  setSelectedCandidates(candidates){
+    this.selectedCanditates = candidates;
+  }
+
+  setAuthors(authors){
+    this.selectedAuthors = authors;
+  }
 }

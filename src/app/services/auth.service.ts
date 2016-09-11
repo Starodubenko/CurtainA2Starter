@@ -1,9 +1,10 @@
 import {Injectable} from "@angular/core";
+import {Http, Response} from "@angular/http";
 import {Observable} from "rxjs";
 import {LoginResponse} from "../model/loginResponse.model";
 import {User} from "../model/user.model";
-import {plainToClass} from "class-transformer";
-import {Subject}    from 'rxjs/Subject';
+import {Subject} from 'rxjs/Subject';
+let decode = require('jwt-decode');
 
 
 @Injectable()
@@ -14,25 +15,19 @@ export class AuthService {
   private _userSource = new Subject<User>();
   private user = this._userSource.asObservable();
 
-  constructor(){
-    this._userSource.next(plainToClass(User, JSON.parse(localStorage.getItem('user_token'))));
+  constructor(private http: Http) {
+    this._userSource.next(this.getUser());
   }
 
   logIn(username: string, password: string): Observable<LoginResponse> {
     return Observable.create(observer => {
-      let loginResponse = new LoginResponse();
-      let isAdmin = AuthService.ADMIN_USERNAME == username.toLowerCase();
-      let isRightAuth = AuthService.PASSWORD == password;
-
-      if (isRightAuth) {
-        let user = new User("John", "Doe");
-        localStorage.setItem('user_token', JSON.stringify(user));
-        this._userSource.next(user);
-        loginResponse.message = null;
-      } else {
-        loginResponse.message = "Login or password is wrong.";
-      }
-      observer.next(loginResponse);
+      this.http.post("http://localhost:8080/api/authenticate", {username: username, password: password})
+        .subscribe((res: Response) => {
+          let resJson = res.json();
+          localStorage.setItem('user_token', resJson.token);
+          this._userSource.next(this.getUser());
+          observer.next(new LoginResponse(resJson.message))
+        });
     })
   }
 
@@ -40,11 +35,11 @@ export class AuthService {
     return !!localStorage.getItem('user_token');
   }
 
-  getUser(){
-    return plainToClass(User, JSON.parse(localStorage.getItem('user_token')));
+  getUser() {
+    return localStorage.getItem('user_token') ? User.fromJson(decode(localStorage.getItem('user_token'))) : null;
   }
 
-  getObservableUser(){
+  getObservableUser() {
     return this.user;
   }
 

@@ -30,4 +30,8 @@ export class User {
   set lastName(value: String) {
     this._lastName = value;
   }
+
+  public static fromJson(json): User {
+    return new User(json.firstName, json.lastName);
+  }
 }

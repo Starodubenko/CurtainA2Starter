@@ -10,19 +10,6 @@ import {NavigationComponent} from "./components/navigation/navigation.component"
     './app.style.scss'
   ],
   template: `
-    <!--<nav>-->
-      <!--<span>-->
-        <!--<a [routerLink]=" ['./'] ">-->
-          <!--Index-->
-        <!--</a>-->
-      <!--</span>-->
-      <!--|-->
-      <!--<span>-->
-        <!--<a [routerLink]=" ['./home'] ">-->
-          <!--Home-->
-        <!--</a>-->
-      <!--</span>-->
-    <!--</nav>-->
     <navigation></navigation>
     <div class="main-container">
       <router-outlet></router-outlet>

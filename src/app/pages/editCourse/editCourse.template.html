@@ -1,6 +1,7 @@
 <div class="edit-course">
   <course [course]="course"
-          [authorCandidates]="authorCandidates"
+          [authorsCandidates]="authorsCandidates"
+          [authors]="course.authors"
           [isBlank]="true"
           (edit)="saveCourse($event)"
           (delete)="deleteCourse($event)"

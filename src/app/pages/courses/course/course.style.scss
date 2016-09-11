@@ -65,7 +65,7 @@
       .authors-list-block{
         display: table-cell;
         width: 400px;
-        select, .actions-block{
+        multi-select-list, .actions-block{
           float: left;
         }
         select {

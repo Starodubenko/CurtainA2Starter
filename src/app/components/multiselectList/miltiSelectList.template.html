@@ -1,0 +1,7 @@
+<select class="form-control authors"
+        (change)="change($event.target.options)"
+        size="5" multiple>
+  <option *ngFor="let item of options" [value]="item.value">
+    {{item.name}}
+  </option>
+</select>

@@ -1,8 +1,8 @@
 import {Injectable} from "@angular/core";
 import {Observable} from "rxjs";
-import {Course} from "../model/course.model";
 import {Http} from "@angular/http";
 import {CourseList} from "../model/courseList.model";
+import {Course} from "../model/course.model";
 
 @Injectable()
 export class CourseService {

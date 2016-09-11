@@ -17,7 +17,7 @@ import {UserService} from "../../services/user.service";
 export class AddCoursePage {
 
   course: Course = new Course();
-  authorCandidates: User[] = [];
+  authorsCandidates: User[] = [];
 
   constructor(private courseService: CourseService,
               private userService: UserService,
@@ -28,7 +28,7 @@ export class AddCoursePage {
   ngOnInit(){
     let self = this;
     this.userService.getAuthorCandidates().subscribe((res: User[]) => {
-      self.authorCandidates = res;
+      self.authorsCandidates = res;
     });
   }
 

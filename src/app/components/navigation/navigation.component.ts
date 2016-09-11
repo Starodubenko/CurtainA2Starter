@@ -22,9 +22,10 @@ export class NavigationComponent {
   constructor(private authService: AuthService,
               private router: Router,
               private breadcrumbService: BreadcrumbService) {
-    breadcrumbService.addFriendlyNameForRoute('/', 'Home');
+    breadcrumbService.addFriendlyNameForRoute('/', '');
     breadcrumbService.addFriendlyNameForRoute('/courses-list', 'courses list');
-    // breadcrumbService.addFriendlyNameForRoute('/', 'Home Sweet Home');
+    breadcrumbService.addFriendlyNameForRoute('/courses-list/1/edit', 'courses list');
+    breadcrumbService.addFriendlyNameForRoute('/courses-list/add', 'add course');
     this.user = this.authService.getUser();
     this.authService.getObservableUser().subscribe((res:User) => {
       this.user = res;
